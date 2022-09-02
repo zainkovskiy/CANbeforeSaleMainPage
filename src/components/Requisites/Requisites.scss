@@ -1,0 +1,32 @@
+.requisites {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  padding: 0 1rem;
+
+  &__label {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+
+    &-wrap {
+      display: flex;
+      align-items: center;
+    }
+
+  }
+
+  &__area {
+    border-radius: 4px;
+    border-color: rgba(0, 0, 0, 0.23);
+    resize: none;
+    outline: 1px solid transparent;
+    transition: border-color, outline .2s;
+
+    &:focus {
+      border-color: #1976d2;
+      outline: 1px solid #1976d2;
+    }
+  }
+}
