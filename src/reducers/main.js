@@ -11,7 +11,8 @@ import {
   setRequisites,
   setRequisitesValue,
   setObject,
-  setObjectPart
+  setObjectPart,
+  setPerson
 } from 'actions/mainActions';
 
 const initialState = new Map({
@@ -42,7 +43,7 @@ export const main = createReducer(initialState, {
       sellers: [
         {
           "fullName": "Smith John Robert",
-          "dataBorn": "2000-03-03",
+          "dateBorn": "2000-03-03",
           "type": "sellers",
           "UID": 12,
           "isCanClient": true,
@@ -76,7 +77,7 @@ export const main = createReducer(initialState, {
         },
         {
           fullName: 'bla seller bla12',
-          dataBorn: '2000-03-03',
+          dateBorn: '2000-03-03',
           type: 'sellers',
           UID: 123,
           "isPrivateClient": true,
@@ -85,7 +86,7 @@ export const main = createReducer(initialState, {
       buyers: [
         {
           fullName: 'bla buyer bla11',
-          dataBorn: '2000-03-03',
+          dateBorn: '2000-03-03',
           type: 'buyers',
           UID: 11,
           "isPrivateClient": true,
@@ -125,4 +126,8 @@ export const main = createReducer(initialState, {
     const value = action.payload.target.value;
     return state.setIn(['data', 'object', name], value)
   },
+  [setPerson]: (state, action) => {
+    console.log(action.payload);
+    return state
+  }
 })

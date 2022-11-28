@@ -45,7 +45,7 @@ export const Person = ({ person }) => {
         </IconButton>
       </div>
       <p className="text person__text">ФИО: <span>{person.fullName}</span></p>
-      <p className="text person__text">Дата рождения: <span>{moment(person.dataBorn).locale('ru').format('DD MMMM YYYY')}</span></p>
+      <p className="text person__text">Дата рождения: <span>{moment(person.dateBorn).locale('ru').format('DD MMMM YYYY')}</span></p>
       {
         person?.realtor &&
         <p className="text person__text">Риелтор: <span>{person?.realtor?.name}</span></p>

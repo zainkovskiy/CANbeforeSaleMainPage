@@ -9,33 +9,43 @@ import './PersonSet.scss';
 export const PersonSet = () => {
   const person = useSelector((state) => state.person.get('person'));
   const navigate = useNavigate();
+  useEffect(() => {
+    if (!person) {
+      navigate('/');
+    }
+  }, [])
   const goBack = () => {
     navigate(-1)
   }
   return (
     <>
-      <div style={navTitle}>
-        <Button
-          size='small'
-          onClick={goBack}
-          startIcon={<KeyboardBackspaceIcon />}
-        >
-          Назад
-        </Button>
-        <span className="text">
-          {/* {
+      {
+        person &&
+        <>
+          <div style={navTitle}>
+            <Button
+              size='small'
+              onClick={goBack}
+              startIcon={<KeyboardBackspaceIcon />}
+            >
+              Назад
+            </Button>
+            <span className="text">
+              {/* {
             person ?
             'Редактирование участника сделки' :
             'Новый участник сделки'
           } */}
-        </span>
-      </div>
-      <Outlet />
+            </span>
+          </div>
+          <Outlet />
+        </>
+      }
     </>
   )
 }
 
-const navTitle={
+const navTitle = {
   display: 'flex',
   width: '100%',
   fontWeight: 600,

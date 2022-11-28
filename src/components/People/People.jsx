@@ -1,7 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import IconButton from '@mui/material/IconButton';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { Link } from "react-router-dom";
+import { getPerson } from "actions/person";
 
 import { Person } from 'components/Person';
 
@@ -11,8 +13,13 @@ const stylePeople = {
   gap: '1rem'
 }
 
+
 export const People = ({ title, stateName }) => {
   const people = useSelector((state) => state.main.getIn(['data', stateName]))
+  const dispatch = useDispatch();
+  const handlerClickLink = () => {
+    dispatch(getPerson({type: stateName}));
+  }
   return (
     <div style={stylePeople}>
       <div className='subtitle text'>
@@ -23,8 +30,15 @@ export const People = ({ title, stateName }) => {
             right: '1rem'
           }}
           size="small"
+          onClick={handlerClickLink}
         >
-          <AddCircleOutlineIcon size='small' />
+          <Link
+            to='person'
+            state='private'
+            style={{ color: '#0c54a0', textDecoration: 'none' }}
+          >
+            <AddCircleOutlineIcon size='small' />
+          </Link>
         </IconButton>
       </div>
       {

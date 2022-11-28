@@ -11,6 +11,7 @@ export const setRequisites = createAction('setRequisites');
 export const setRequisitesValue = createAction('setRequisitesValue');
 export const setObject = createAction('setObject');
 export const setObjectPart = createAction('setObjectPart');
+export const setPerson = createAction('setPerson');
 
 export const getData = () => {
   return async (dispatch) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setValuePerson } from "actions/person";
+import { setToggleValue } from "actions/person";
 import {
   usePersonName, usePersonQuestion,
   usePersonFirstAnswer,
@@ -21,7 +21,7 @@ export const PersonToggleQuestion = ({ toggleButtonShow }) => {
   const question = usePersonQuestion(location.state);
 
   const handleChange = () => {
-    dispatch(setValuePerson({
+    dispatch(setToggleValue({
       name: keyName,
       value: event.target.value === 'true',
     }))

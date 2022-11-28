@@ -9,12 +9,14 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import moment from "moment/moment";
 
+import './PersonForm.scss';
+
 export const PersonForm = ({ onSubmit }) => {
   const location = useLocation();
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="form-person" onSubmit={handleSubmit(onSubmit)}>
       {
         location.state !== 'сapable' &&
         <>
