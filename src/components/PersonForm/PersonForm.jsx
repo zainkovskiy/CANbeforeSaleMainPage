@@ -4,6 +4,10 @@ import { TextField } from "@mui/material";
 import Button from '@mui/material/Button';
 import { useLocation } from "react-router-dom";
 import { PersonUpload } from "../PersonUpload/PersonUpload";
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import moment from "moment/moment";
 
 export const PersonForm = ({ onSubmit }) => {
   const location = useLocation();
@@ -16,11 +20,11 @@ export const PersonForm = ({ onSubmit }) => {
         <>
           <TextField
             autoComplete="off"
-            label="Имя"
+            label="Фамилия"
             variant="outlined"
             size='small'
             // defaultValue={requisitesValue?.downCount || ''}
-            {...register('firstName', {
+            {...register('secondName', {
               // required: true
             })}
             error={errors.firstName && true}
@@ -31,13 +35,13 @@ export const PersonForm = ({ onSubmit }) => {
             variant="outlined"
             size='small'
             // defaultValue={requisitesValue?.downCount || ''}
-            {...register('secondName', {
+            {...register('firstName', {
               // required: true
             })}
           />
           <TextField
             autoComplete="off"
-            label="Имя"
+            label="Отчество"
             variant="outlined"
             size='small'
             // defaultValue={requisitesValue?.downCount || ''}
@@ -45,6 +49,25 @@ export const PersonForm = ({ onSubmit }) => {
               // required: true
             })}
           />
+          <LocalizationProvider
+            dateAdapter={AdapterMoment}
+            adapterLocale={moment.locale('ru')}
+          >
+            <DatePicker
+              onChange={() => {}}
+              {...register('dateBorn', {
+                // required: true
+              })}
+              renderInput={(params) => 
+              <TextField {...params}
+                size='small'
+                inputProps={{
+                  ...params.inputProps,
+                  placeholder: 'дд.мм.гггг'
+                }}
+              />}
+            />
+          </LocalizationProvider>
         </>
       }
       <PersonUpload

@@ -17,12 +17,18 @@ export const PersonFormConstructor = () => {
     navigate(usePersonNextPath(location.state), { state: usePersonNextName(location.state) })
   }
 
-  const inVisibleButton = () => {
+  const toggleButtonShow = () => {
     if (location.state === 'private'){
-      return !person.isPrivateClient
+      return person.isPrivateClient
+    }
+    if (location.state === 'guardian'){
+      return false
     }
     if (location.state === 'сapable'){
-      return !person.isСapable
+      return person.isСapable
+    }
+    if (location.state === 'proxy'){
+      return false
     }
     return person.hasOwnProperty(usePersonName(location.state))
   }
@@ -40,12 +46,13 @@ export const PersonFormConstructor = () => {
     if (location.state === 'сapable'){
       return person.hasOwnProperty('isСapable') && !person.isСapable
     }
+    return false
   }
 
   return (
     <>
       <PersonToggleQuestion
-        buttonInVisible={inVisibleButton()}
+        toggleButtonShow={toggleButtonShow()}
       />
       {
         isShowForm() && 

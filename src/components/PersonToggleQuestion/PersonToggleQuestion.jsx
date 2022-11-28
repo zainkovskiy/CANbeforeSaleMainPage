@@ -13,7 +13,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Button from '@mui/material/Button';
 import { usePersonNextName } from "../../hooks/personHooks";
 
-export const PersonToggleQuestion = ({ buttonInVisible }) => {
+export const PersonToggleQuestion = ({ toggleButtonShow }) => {
   const person = useSelector((state) => state.person.get('person'));
   const location = useLocation();
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ export const PersonToggleQuestion = ({ buttonInVisible }) => {
         <ToggleButton value={false}>{usePersonSecondAnswer(location.state)}</ToggleButton>
       </ToggleButtonGroup>
       {
-        (!buttonInVisible && person.hasOwnProperty(keyName)) &&
+        toggleButtonShow &&
         <Button
           size="small"
           variant="contained"

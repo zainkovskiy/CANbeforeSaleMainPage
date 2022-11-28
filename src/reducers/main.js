@@ -78,7 +78,8 @@ export const main = createReducer(initialState, {
           fullName: 'bla seller bla12',
           dataBorn: '2000-03-03',
           type: 'sellers',
-          UID: 123
+          UID: 123,
+          "isPrivateClient": true,
         },
       ],
       buyers: [
@@ -86,7 +87,8 @@ export const main = createReducer(initialState, {
           fullName: 'bla buyer bla11',
           dataBorn: '2000-03-03',
           type: 'buyers',
-          UID: 11
+          UID: 11,
+          "isPrivateClient": true,
         }
       ],
       requisites: {
