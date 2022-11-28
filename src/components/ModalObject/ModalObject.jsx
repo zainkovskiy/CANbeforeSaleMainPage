@@ -33,10 +33,19 @@ export const ModalObject = ({ onClose }) => {
       if (res.status === 200) {
         setObjectList([
           {
-            reqTypeofRealty: 'Дом',
-            fullAddress: 'Novosib',
-            reqPrice: 3000000,
-            reqNumber: 56059000179
+            "reqTypeofRealty": "Дом",
+            "fullAddress": "Novosib",
+            "reqPrice": 2000000,
+            "reqNumber": 56059000183,
+            "rosreestrData": {
+              "objStatus": "Актуально",
+              "objArea": "29.3",
+              "objFloor": 3,
+              "updated": "2022-05-27",
+              "objPurpose": "Жилое",
+              "cadNumber": "54:19:020104:10552",
+              "cadPrice": "934752.03"
+            }
           },
           {
             reqTypeofRealty: 'Дом',
@@ -100,7 +109,7 @@ export const ModalObject = ({ onClose }) => {
                       onClick={() => handleClick(idx, item)}
                     >
                       <div className="object-item">
-                        <p className="text object__text">{item.reqTypeofRealty}<span>{item.fullAddress}</span></p>
+                        <p className="text object__text">{item.reqTypeofRealty} <span>{item.fullAddress}</span></p>
                         <span className="text object__text-price">{item.reqPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}&#8381;</span>
                       </div>
                     </ListItemButton>

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { RouterProvider } from "react-router-dom";
 
 import { getData } from "actions/mainActions";
 
-import { Header } from 'components/Header';
-import { Layout } from 'components/Layout';
 import { Linear } from 'components/Linear';
+import { router } from "./router";
 
 import './App.scss';
 
@@ -20,7 +20,6 @@ export const App = () => {
 
   return (
     <>
-      <Header />
       {
         loading ?
           <Linear /> :
@@ -28,7 +27,7 @@ export const App = () => {
             {
               error ?
                 <span className="text">error</span> :
-                <Layout />
+                <RouterProvider router={router} />
             }
           </>
       }

@@ -41,16 +41,44 @@ export const main = createReducer(initialState, {
       },
       sellers: [
         {
-          fullName: 'bla seller bla10',
-          dataBorn: '2000-03-03',
-          type: 'sellers',
-          UID: 10
+          "fullName": "Smith John Robert",
+          "dataBorn": "2000-03-03",
+          "type": "sellers",
+          "UID": 12,
+          "isCanClient": true,
+          "isPrivateClient": true,
+          "dateBorn": "1988-09-24",
+          "isAdult": true, //Совершеннолений
+          "isСapable": true, //Дееспособный
+          "isGuardian": false, //Опекун/родитель
+          "byProxy": false, //По доверенности
+          "passDate": "2021-08-01",
+          "passSeries": "8111",
+          "passNumber": "421035",
+          "passEntity": "Орган выдавший паспорт",
+          "documents": [
+
+          ],
+          "realtor": {
+            "UID": 9531,
+            "name": "Соколов Александр",
+            "isPayer": false,
+            "organizationUID": "000000021",
+            "departmentUID": "000050994",
+            "price": 173160.00,
+            "withoutСommissionAgent": false,
+            "isIP": true,
+          },
+          "contract": {
+            "UID": 54654,
+            "type": "Договор поручения"
+          }
         },
         {
           fullName: 'bla seller bla12',
           dataBorn: '2000-03-03',
           type: 'sellers',
-          UID: 12
+          UID: 123
         },
       ],
       buyers: [

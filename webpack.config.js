@@ -17,6 +17,7 @@ module.exports = {
       components: path.resolve(__dirname, 'src', 'components'),
       actions: path.resolve(__dirname, 'src', 'actions'),
       reducers: path.resolve(__dirname, 'src', 'reducers'),
+      hooks: path.resolve(__dirname, 'src', 'hooks'),
     }
   },
   module: {
@@ -48,5 +49,8 @@ module.exports = {
     new miniCssExtractPlugin({
       filename: 'main.css'
     })
-  ]
+  ],
+  devServer: {
+    historyApiFallback: true,
+  } 
 }

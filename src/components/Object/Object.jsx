@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import moment from 'moment';
 import { Link } from "@mui/material";
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -38,43 +39,65 @@ export const Object = () => {
       {
         object ?
           <div className="object">
-            <div className="object-item">
-              <p className="text object__text">{object.reqTypeofRealty}<span>{object.fullAddress}</span></p>
-              <span className="text object__text-price">{object.reqPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}&#8381;</span>
-            </div>
-            <div style={{ display: 'flex' }}>
-              <FormControlLabel
-                control={<Switch color="primary"
-                  {...register('part')}
-                />}
-                label="Указать долю"
-                labelPlacement="start"
-                sx={{ margin: 0, justifySelf: 'start' }}
-              />
-              {
-                isPart ?
+            <div className="object__summary">
+              <div className="object__wrap">
+                <span className="text" style={{ fontWeight: 700 }}>Общие данные</span>
+                <p className="text object__text">Цена: <span>{object?.reqPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}&#8381;</span></p>
+                <p className="text object__text">{object?.reqTypeofRealty} <span>{object?.fullAddress}</span></p>
+                <FormControlLabel
+                  control={<Switch color="primary"
+                    {...register('part')}
+                  />}
+                  label="Указать долю"
+                  labelPlacement="start"
+                  sx={{ margin: 0, justifySelf: 'start' }}
+                />
+                {
+                  isPart &&
                   <TextField
                     autoComplete="off"
                     variant="outlined"
                     size='small'
                     {...register('partCount')}
                     onChange={handleChange}
-                  /> :
-                  <div style={{ height: 40 }}></div>
-              }
+                  />
+                }
+              </div>
+              <div className="object__wrap">
+                <span className="text" style={{ fontWeight: 700 }}>Данные росреестра</span>
+                <p className="text object__text">Статус объекта: <span>{object?.rosreestrData?.objStatus}</span></p>
+                <p className="text object__text">Площадь: <span>{object?.rosreestrData?.objArea}</span></p>
+                <p className="text object__text">Этаж: <span>{object?.rosreestrData?.objFloor}</span></p>
+                <p className="text object__text">Назначение: <span>{object?.rosreestrData?.objPurpose}</span></p>
+                <p className="text object__text">Кадастровая стоимость: <span>{object?.rosreestrData?.cadPrice}&#8381;</span></p>
+                <p className="text object__text">Кадастроый номер: <span>{object?.rosreestrData?.cadNumber}</span></p>
+                <p className="text object__text">Дата обновдения: <span>{object?.rosreestrData?.updated && moment(object?.rosreestrData?.updated).locale('ru').format('DD MMMM YYYY')}</span></p>
+              </div>
             </div>
-            <Button
-              variant="outlined"
-              startIcon={<DeleteIcon />}
-              color='error'
-              sx={{
-                alignSelf: 'flex-end'
-              }}
-              onClick={handleClick}
-              size='small'
-            >
-              удалить объект
-            </Button>
+            <div className="object__buttons">
+              <Button
+                variant="outlined"
+                sx={{
+                  alignSelf: 'flex-end'
+                }}
+                onClick={() => console.log('order')}
+                size='small'
+              >
+                заказать егрн
+              </Button>
+              <Button
+                variant="outlined"
+                startIcon={<DeleteIcon />}
+                color='error'
+                sx={{
+                  alignSelf: 'flex-end'
+                }}
+                onClick={handleClick}
+                size='small'
+              >
+                удалить объект
+              </Button>
+            </div>
           </div> :
           <div className="object">
             <span className="text object__change">

@@ -3,23 +3,27 @@
   flex-direction: column;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border-left: 1px solid #737373;
+  box-shadow: 2px 2px 8px 0px rgb(34 60 80 / 20%);
 
-  &__name {
+  &__top {
     display: flex;
     gap: 0.5rem;
     justify-content: space-between;
     align-items: center;
   }
+  &__bottom {
+    display: flex;
+    justify-content: flex-end;
+  }
 
   &__text {
-    font-size: 11px;
+    font-size: 12px;
     margin: 0;
 
     & span {
-      font-size: 14px;
+      font-size: 12px;
       display: block;
-      font-weight: 700;
+      font-weight: 600;
     }
   }
 }

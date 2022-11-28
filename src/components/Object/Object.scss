@@ -1,28 +1,42 @@
 .object {
-  padding: 0 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 
-  &-item {
+  &__buttons {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    width: 100%;
+    margin-bottom: 0.5rem;
   }
 
   &__text {
-    font-size: 11px;
+    font-size: 12px;
     margin: 0;
+    font-weight: 600;
 
     & span {
-      display: block;
-      font-size: 14px;
+      font-weight: 400;
+      // display: block;
+      // font-size: 14px;
     }
 
     &-price {
       font-size: 14px;
     }
+  }
+  &__summary{
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+  }
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 1;
+    align-items: flex-start;
   }
 }
