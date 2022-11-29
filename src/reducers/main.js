@@ -42,7 +42,9 @@ export const main = createReducer(initialState, {
       },
       sellers: [
         {
-          "fullName": "Smith John Robert",
+          secondName: 'Smith',
+          firstName: 'John',
+          lastName: 'Robert',
           "dateBorn": "2000-03-03",
           "type": "sellers",
           "UID": 12,
@@ -76,7 +78,9 @@ export const main = createReducer(initialState, {
           }
         },
         {
-          fullName: 'bla seller bla12',
+          secondName: 'Smith',
+          firstName: 'John',
+          lastName: 'Robert',
           dateBorn: '2000-03-03',
           type: 'sellers',
           UID: 123,
@@ -85,7 +89,9 @@ export const main = createReducer(initialState, {
       ],
       buyers: [
         {
-          fullName: 'bla buyer bla11',
+          secondName: 'Smith',
+          firstName: 'John',
+          lastName: 'Robert',
           dateBorn: '2000-03-03',
           type: 'buyers',
           UID: 11,
@@ -127,7 +133,18 @@ export const main = createReducer(initialState, {
     return state.setIn(['data', 'object', name], value)
   },
   [setPerson]: (state, action) => {
-    console.log(action.payload);
-    return state
+    let changePerson = {};
+    Object.assign(changePerson, action.payload);
+    delete changePerson.final;
+    const findIndex = state.getIn(['data', changePerson.type]).findIndex((item) => item.UID === changePerson.UID);
+
+    if (findIndex === -1){
+      console.log('here');
+      return state.setIn(['data', action.payload.type], [...state.getIn(['data', action.payload.type]), changePerson])
+    }
+
+    let arr = state.getIn(['data', action.payload.type]).filter(item => item.UID !== action.payload.UID);
+    arr.splice(findIndex, 0, changePerson)
+    return state.setIn(['data', action.payload.type], arr)
   }
 })

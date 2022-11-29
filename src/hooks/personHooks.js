@@ -54,6 +54,11 @@ export const usePersonNextPath = (name, answer) => {
     сapable: '/person/proxy',
     proxy: '/',
     guardian: '/person/proxy',
+    // private: answer ? 'adult' : '/dev/beforeSaleMainPage/',
+    // adult: answer ? '/dev/beforeSaleMainPage/person/сapable' : '/dev/beforeSaleMainPage/person/guardian',
+    // сapable: '/dev/beforeSaleMainPage/person/proxy',
+    // proxy: '/dev/beforeSaleMainPage/',
+    // guardian: '/dev/beforeSaleMainPage/person/proxy',
   }
   return nextPath[name]
 }

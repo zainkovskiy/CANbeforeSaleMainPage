@@ -7,6 +7,7 @@ import { PersonFormConstructor } from 'components/PersonFormConstructor';
 export const router = createBrowserRouter([
   { 
     path: '/',
+    // path: 'dev/beforeSaleMainPage/',
     element: <Layout/>,
     children: [
       {

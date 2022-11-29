@@ -18,7 +18,7 @@ export const People = ({ title, stateName }) => {
   const people = useSelector((state) => state.main.getIn(['data', stateName]))
   const dispatch = useDispatch();
   const handlerClickLink = () => {
-    dispatch(getPerson({type: stateName}));
+    dispatch(getPerson({type: stateName, UID: `New${Math.floor(Math.random() * (100 - 1) + 1)}`}));
   }
   return (
     <div style={stylePeople}>

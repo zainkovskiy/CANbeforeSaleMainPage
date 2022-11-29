@@ -14,13 +14,15 @@ export const PersonFormConstructor = () => {
   const dispatch = useDispatch();
   const nextName = usePersonNextName(location.state, person[usePersonName(location.state)]);
 
+  useEffect(() => {
+    if (nextName === 'final' && person?.final) {
+      setFinalValue();
+    }
+  }, [person])
+
   const onSubmit = (data) => {
-    // console.log(data);
     if (nextName === 'final') {
-      dispatch(setValuePersonFinal(data));
-      dispatch(setPerson(person));
-      dispatch(clearPerson());
-      navigate(usePersonNextPath(location.state), { state: nextName })
+      dispatch(setValuePersonFinal({ ...data, final: true }));
       return
     }
     dispatch(setValuePerson({
@@ -28,6 +30,11 @@ export const PersonFormConstructor = () => {
       data: data
     }))
     navigate(usePersonNextPath(location.state), { state: nextName })
+  }
+  const setFinalValue = () => {
+    navigate(usePersonNextPath(location.state), { state: nextName })
+    dispatch(setPerson(person));
+    dispatch(clearPerson());
   }
 
   const toggleButtonShow = () => {

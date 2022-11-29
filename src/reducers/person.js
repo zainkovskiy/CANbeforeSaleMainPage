@@ -9,6 +9,7 @@ const initialState = new Map({
 
 export const person = createReducer(initialState, {
   [getPerson]: (state, action) => {
+    console.log(action.payload);
     return state.set('person', action.payload)
   },
   [setToggleValue]: (state, action) => {

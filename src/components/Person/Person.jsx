@@ -44,7 +44,9 @@ export const Person = ({ person }) => {
           <CloseIcon size='small' />
         </IconButton>
       </div>
-      <p className="text person__text">ФИО: <span>{person.fullName}</span></p>
+      <p className="text person__text">ФИО: <span>
+        {person?.secondName} {person?.firstName} {person?.lastName}
+        </span></p>
       <p className="text person__text">Дата рождения: <span>{moment(person.dateBorn).locale('ru').format('DD MMMM YYYY')}</span></p>
       {
         person?.realtor &&
